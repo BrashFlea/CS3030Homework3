@@ -22,31 +22,30 @@
 function help
 {
 	echo "Missing arguments."
-	echo " Usage: $0 [-s sed -a awk -i input]"
+	echo "Usage: $0 [-s sed -a awk -i input]"
 }
 
-if [ $1 = "--help"]
+if [ $1 = "--help" ]
 then
 	help
 else
-	while getopts ":" opt
+	while getopts "s:a:i:" opt
 	do
 		case $opt in
-		a) awkrc=$OPTARG;;
 		s) sedsrc=$OPTARG;;
+		a) awkrc=$OPTARG;;
 		i) datainputfile=$OPTARG;;
-		\?)help
-
+		\?)help exit 1;;
 		esac
-	done
-
-	if [-z $6 ]
+	#done
+	if [ -e "$datainputfile" ]
 	then
-		$6 | ./wildlings_hw3.sed | ./wildlings_hw3.awk > 20CenturyPresidents.txt
-
+		echo "Your output file will be located in 20CenturyPresidents.txt"
+		sed -f $sedsrc $datainputfile  | `awk -f $awksrc` > 20CenturyPresidents.txt
 	else
 		help
 	fi
+#fi
+done
 fi
-
 exit 0
