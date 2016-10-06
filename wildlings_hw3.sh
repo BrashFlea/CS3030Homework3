@@ -35,17 +35,16 @@ else
 		s) sedsrc=$OPTARG;;
 		a) awkrc=$OPTARG;;
 		i) datainputfile=$OPTARG;;
-		\?)help exit 1;;
+		\?)help;;
 		esac
-	#done
+	done
+
 	if [ -e "$datainputfile" ]
 	then
 		echo "Your output file will be located in 20CenturyPresidents.txt"
-		sed -f $sedsrc $datainputfile | awk -f $awksrc  > 20CenturyPresidents.txt
+		sed -f $sedsrc $datainputfile | awk -f $awksrc > 20CenturyPresidents.txt
 	else
 		help
 	fi
-#fi
-done
 fi
 exit 0
