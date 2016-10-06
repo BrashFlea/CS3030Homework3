@@ -33,7 +33,7 @@ else
 	do
 		case $opt in
 		s) sedsrc=$OPTARG;;
-		a) awkrc=$OPTARG;;
+		a) awksrc=$OPTARG;;
 		i) datainputfile=$OPTARG;;
 		\?)help;;
 		esac
@@ -41,8 +41,8 @@ else
 
 	if [ -e "$datainputfile" ]
 	then
-		echo "Your output file will be located in 20CenturyPresidents.txt"
 		sed -f $sedsrc $datainputfile | awk -f $awksrc > 20CenturyPresidents.txt
+		echo "Your data will be saved in 20CenturyPresidents.txt"
 	else
 		help
 	fi
