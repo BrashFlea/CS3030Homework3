@@ -2,8 +2,9 @@
 #Jonathan Mirabile
 #
 #SED format expected: dd.mm.yy
-awk -F, '{print $2 " " "." $4}' presidents.csv |
-awk -v x=1900 -F. '{if ($4 > x ) print $1}'
+read input
+ -F, '{print $2 "from " $4 " to " $5}' $input |
+awk -v x=1900 -F. '{if ($3 > x ) print $0}'
 
 
 exit 0
