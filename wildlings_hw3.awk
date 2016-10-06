@@ -1,10 +1,5 @@
-#Homework 3
-#Jonathan Mirabile
-#
-#SED format expected: dd.mm.yy
-read input
-awk -F, '{print $2 "from " $4 " to " $5}' $input |
-awk -v x=1900 -F. '{if ($3 > x ) print $0}'
-
-
-exit 0
+{
+FS="."
+if (substr($4, length($4)-3)>1900)
+print $2, "from " $4 " to " $5
+}

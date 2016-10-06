@@ -41,7 +41,7 @@ else
 	if [ -e "$datainputfile" ]
 	then
 		echo "Your output file will be located in 20CenturyPresidents.txt"
-		sed -f $sedsrc $datainputfile > temp.txt  | `awk -f $awksrc temp.txt` > 20CenturyPresidents.txt
+		sed -f $sedsrc $datainputfile | awk -f $awksrc  > 20CenturyPresidents.txt
 	else
 		help
 	fi
